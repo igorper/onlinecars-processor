@@ -4,11 +4,7 @@ from sqlite3 import Error
 from collections import defaultdict
 import re
 from datetime import datetime
-import pandas as pd
-import dtale
-import time
 from os import walk
-import csv
 
 class FeatureNormalizer:
     def __init__(self, field, lookup):
@@ -16,21 +12,21 @@ class FeatureNormalizer:
         self.LOOKUP = list(map(str.lower, lookup))
 
 FEATURE_NORMALIZERS = [
-        FeatureNormalizer('usb_aux', ['usb-schnittstellen inkl aux-in', 'usb & aux-in', 'usb-schnittstellen', 'aux-in und usb' ,'2 usb-c-schnittstellen', '2 usb-schnittstellen', '2 usb-schnittstellen & aux-in', '2 usb-schnittstellen aux-in', 'aux-in', 'usb-schnittstelle', 'usb-schnittstelle inkl. aux-in', 'usb-schnittstellen aux-in', 'usb-schnittstelle aux-in', 'usb-schnittstelle auch f\u00fcr ipod/iphone']),
+        FeatureNormalizer('usb_aux', ['usb und aux anschluss', 'usb-schnittstelle & aux-ix', '2 usb schnittstellen & aux in', 'usb schnittstelle', 'usb-schnittstelle & aux-in', 'usb schnittstelle & aux in', 'usb-schnittstellen inkl aux-in', 'usb & aux-in', 'usb-schnittstellen', 'aux-in und usb' ,'2 usb-c-schnittstellen', '2 usb-schnittstellen', '2 usb-schnittstellen & aux-in', '2 usb-schnittstellen aux-in', 'aux-in', 'usb-schnittstelle', 'usb-schnittstelle inkl. aux-in', 'usb-schnittstellen aux-in', 'usb-schnittstelle aux-in', 'usb-schnittstelle auch f\u00fcr ipod/iphone']),
         FeatureNormalizer('tires_fancy', ['amg-räder 18 zoll 225 40 18', '17 zoll räder 225 45 17', '18 zoll r\u00e4der 235 45 18', '18 zoll amg r\u00e4der', '19 zoll r\u00e4der 235 40 19']),
-        FeatureNormalizer('klima', ['3-zonen klimaautomtik', 'kimaautomatik','3 zonen klimaanlage', '3 zonen klima', '3-zonen klimaautomatik', 'klimaanlage', 'klimaautomatik', '3-zonne klimaautomatik', 'standheizung und -l\u00fcftung']),
+        FeatureNormalizer('klima', ['3 zonen-klimaautomatik', 'climatronic', '3-zonen klimaautomtik', 'kimaautomatik','3 zonen klimaanlage', '3 zonen klima', '3-zonen klimaautomatik', 'klimaanlage', 'klimaautomatik', '3-zonne klimaautomatik', 'standheizung und -l\u00fcftung']),
         FeatureNormalizer('abs', ['abs']),
-        FeatureNormalizer('active_tempomat', ['abstandsradar', 'automatische distanzregelung']),
-        FeatureNormalizer('airbag', ['kopfairbagsystem inkl. seitenairbags vorn', 'airbag', 'beifahrer airbag']),
-        FeatureNormalizer('airbag_deactivate_passenger', ['deaktivierungsschalter f\u00fcr beifahrerairbag' ,'airbag deaktivierung beifahrer', 'beifahrerairbag deaktivierbar', 'beifahrerairbag-deaktivierung', 'beifahrerairbag deaktiviebrar']),
+        FeatureNormalizer('active_tempomat', ['autoamtische-distanzregelung', 'abstandsradar', 'automatische distanzregelung']),
+        FeatureNormalizer('airbag', ['seitenairbags', 'kopfairbagsystem für front- und fondpassagiere inkl. seitenairbags vorn', 'kopfairbagsystem inkl. seitenairbags vorn', 'airbag', 'beifahrer airbag']), # join both airbag
+        FeatureNormalizer('airbag_deactivate_passenger', ['beifahrerairbag-deaktivierbar', 'deaktivierungsschalter f\u00fcr beifahrerairbag' ,'airbag deaktivierung beifahrer', 'beifahrerairbag deaktivierbar', 'beifahrerairbag-deaktivierung', 'beifahrerairbag deaktiviebrar']),
         FeatureNormalizer('alarm', ['alarmanlage']),
         FeatureNormalizer('four_wheel_drive', ['allrad', 'allradantrieb']),
-        FeatureNormalizer('trailer_hitch', ['anh\u00e4ngerkupplung', 'anh\u00e4ngevorrichtung anklappbar', 'anhaengerkupplung']),
-        FeatureNormalizer('trailer_hitch_preparation', ['anh\u00e4ngevorrichtung']),
+        FeatureNormalizer('trailer_hitch', ['anhängekupplung', 'anh\u00e4ngerkupplung', 'anh\u00e4ngevorrichtung anklappbar', 'anhaengerkupplung']),
+        FeatureNormalizer('trailer_hitch_preparation', ['anhaengevorrichtung', 'anh\u00e4ngevorrichtung']),
         FeatureNormalizer('apple_carplay', ['carplay', 'apple carplay']),
-        FeatureNormalizer('side_mirror_electric', ['innen- und aussenspiegel automat. abblendbar', 'außenspiegel elektrisch einstell-/anklapp-/beheizbar', 'außenspiegel elektr. einstell- und beheizbar', 'außenspiegel elektrisch einstell- anklapp- und beheizbar', 'außenspiegel elektr. einstell- beheizbar mit memoryfunktion', 'außenspiegel elektrisch einstell- und beheizbar auf fahrerseite automatisch abblendend', 'außenspiegel elektrisch einstell- anklappbar', 'aussenspiegel li. u. re. abklappbar', 'au\u00dfenspiegel elektr. einstell- beheiz- und anklappbar', 'au\u00dfenspiegel auf fahrerseite automatisch abblendend', 'au\u00dfenspiegel anklapp- und beheizbar', 'au\u00dfenspiegel anklapp und beheizbar' ,'au\u00dfenspiegel anklapp- und beheizbar auf fahrerseite abblendend', 'au\u00dfenspiegel elektr. anklapp- und beheizbar', 'au\u00dfenspiegel elektrisch einstell- und beheizbar', 'aussenspiegel elektr. beheizbar', 'aussenspiegel elektrisch', 'au\u00dfenspiegel elektrisch anklappbar', 'au\u00dfenspiegel elektrisch einstell- anklapp- beheizbar']),
-        FeatureNormalizer('parking_assistant', ['außenspiegel heizbar und elektrisch verstellbar', 'auspark- und parklenkassistent', 'einparkhilfe vorn & hinten', 'einparkhilfe vorne  & hinten', 'einaparkhilfe vorne & hinten', 'einparkhilfe hi. + vo.', 'parkassist', 'parklenkassistent', 'parklenkassistent inkl. einparkhilfe','einparkhilfe vorne und hinten', 'ausparkassistent', 'einparkhilfe', 'einparkhilfe  vorne & hinten', 'einparkhilfe vorn und hinten', 'einparkhilfe vorne & hinten', 'aktiver parkassistent', 'einparkhilfe hinten', 'parkassistent']),
-        FeatureNormalizer('other', ['schiebetür links & rechts', 'schiebetür links', 'amg sportpaket', 'dc-schnellladen', 'waermepumpe', 'ac-laden professional', 'schiebetür rechts', 'wärmepumpe', 'm spotpaket', 'aus damenhand', 'm sportpaket', 'luxury-line', 'sportpaket amg', '7-sitzer', 'luxury line', 'm-sportpaket', 'm ärodynamikpaket', 'm sportfahrwerk', 'durchladesystem', 'klapptische an den rückseiten der vordersitze', 'nightpaket', 'sportpaket', 'avantgarde-paket exterieur', 'eu spezifische zusatzumfaenge', 'nigthpaket', 'amg-sportpaket', 'luxury-paket interieur', 'anhängerrangierassistent', 'schlechtwegefahrwerk', 'durchlademoeglichkeit', 'sportfahrwerk', 'basis', 'crimson red metallic', 'sport line', 'sportline']),
+        FeatureNormalizer('side_mirror_electric', ['außenspiegel beheizbar', 'außenspiegel elektr. anklappbar', 'außenspiegel elektr. einstell- anklapp- beheizbar', 'außenspiegel heizbar und elektrisch verstellbar','innen- und aussenspiegel automat. abblendbar', 'außenspiegel elektrisch einstell-/anklapp-/beheizbar', 'außenspiegel elektr. einstell- und beheizbar', 'außenspiegel elektrisch einstell- anklapp- und beheizbar', 'außenspiegel elektr. einstell- beheizbar mit memoryfunktion', 'außenspiegel elektrisch einstell- und beheizbar auf fahrerseite automatisch abblendend', 'außenspiegel elektrisch einstell- anklappbar', 'aussenspiegel li. u. re. abklappbar', 'au\u00dfenspiegel elektr. einstell- beheiz- und anklappbar', 'au\u00dfenspiegel auf fahrerseite automatisch abblendend', 'au\u00dfenspiegel anklapp- und beheizbar', 'au\u00dfenspiegel anklapp und beheizbar' ,'au\u00dfenspiegel anklapp- und beheizbar auf fahrerseite abblendend', 'au\u00dfenspiegel elektr. anklapp- und beheizbar', 'au\u00dfenspiegel elektrisch einstell- und beheizbar', 'aussenspiegel elektr. beheizbar', 'aussenspiegel elektrisch', 'au\u00dfenspiegel elektrisch anklappbar', 'au\u00dfenspiegel elektrisch einstell- anklapp- beheizbar']),
+        FeatureNormalizer('parking_assistant', ['einparkhilfe vorne vorne & hinten', 'parklenkassistent und einparkhilfe', 'einparkhilfe vorne & hitnen', 'einpakrhilfe vorne & hinten', 'auspark- und parklenkassistent', 'einparkhilfe vorn & hinten', 'einparkhilfe vorne  & hinten', 'einaparkhilfe vorne & hinten', 'einparkhilfe hi. + vo.', 'parkassist', 'parklenkassistent', 'parklenkassistent inkl. einparkhilfe','einparkhilfe vorne und hinten', 'ausparkassistent', 'einparkhilfe', 'einparkhilfe  vorne & hinten', 'einparkhilfe vorn und hinten', 'einparkhilfe vorne & hinten', 'aktiver parkassistent', 'einparkhilfe hinten', 'parkassistent']),
+        FeatureNormalizer('other', ['federung hinten mit vollautomatischem niveauregulierungssystem', 'real time traffic information', 'reifenreparatur-set', 'fahrerlebnisschalter inkl. eco pro', 'standheizung', 'unfall fahrzeug', 'standheizung/-lüftung', 'verkauf nur an gewerbe', '===', 'variable sportlenkung', 'r-line interieur', 'sportfahwerk', 'r-line exterieur', 'schiebetür links & rechts', 'schiebetür links', 'amg sportpaket', 'dc-schnellladen', 'waermepumpe', 'ac-laden professional', 'schiebetür rechts', 'wärmepumpe', 'm spotpaket', 'aus damenhand', 'm sportpaket', 'luxury-line', 'sportpaket amg', '7-sitzer', 'luxury line', 'm-sportpaket', 'm ärodynamikpaket', 'm sportfahrwerk', 'durchladesystem', 'klapptische an den rückseiten der vordersitze', 'nightpaket', 'sportpaket', 'avantgarde-paket exterieur', 'eu spezifische zusatzumfaenge', 'nigthpaket', 'amg-sportpaket', 'luxury-paket interieur', 'anhängerrangierassistent', 'schlechtwegefahrwerk', 'durchlademoeglichkeit', 'sportfahrwerk', 'basis', 'crimson red metallic', 'sport line', 'sportline']),
         FeatureNormalizer('hill_assistant', ['berganfahrassistent']),
         FeatureNormalizer('bluetooth', ['bluetooth', 'bluetoth']),
         FeatureNormalizer('board_computer', ['bordcomputer']),
@@ -40,54 +36,54 @@ FEATURE_NORMALIZERS = [
         FeatureNormalizer('digital_radio', ['digitaler radioempfang']),
         FeatureNormalizer('drive_assistant', ['active guard', 'kollisionswarner m. aktivem bremseingriff', 'anfahrhilfe-/ abfahrhilfe', 'driving assistant']),
         FeatureNormalizer('electric_windows', ['elektr. fensterheber']),
-        FeatureNormalizer('electric_parking_brake', ['parkbremse elektr.', 'elektrische parkbremse', 'elektronische parkbremse inkl. auto-hold-funktion', 'parkbremse elektr. inkl. auto-hold-funktion', 'parkbremse elektrisch']),
+        FeatureNormalizer('electric_parking_brake', ['auto-hold-funktion', 'parkbremse elektrisch inkl. auto-hold-funktion', 'parkbremse elektr.', 'elektrische parkbremse', 'elektronische parkbremse inkl. auto-hold-funktion', 'parkbremse elektr. inkl. auto-hold-funktion', 'parkbremse elektrisch']),
         FeatureNormalizer('esp', ['elektronisches stabilit\u00e4tsprogramm']),
-        FeatureNormalizer('fancy_driver_seat', ['sportmultifunktions-lederlenkrad', 'massagefunktion', 'lordosenverstellung', 'massage- und memoryfunktion fahrerseite', 'massage- und memoryfunktion auf fahrerseite', 'fahrersitzlehne elektr. mit massagefunkton', 'vordersitze elektrisch einstellbar', 'sporsitze', 'fahrersitzlehne elekt. mit massagefunktion', 'sitzeinstellung elektr. mit memory', 'massagefunktion auf fahrerseite','fahrersitzlehen elektr. einstellbar','fahrprogrammwahlschalter','fahrersitzlehne elektr. einstellbar mit massage','fahrersitz elektr. mit memoryfunktion','fahrersitz mit massage und memory', 'fahrersitz mit memory und massage', 'fahrersitzlehne elektr.', 'fahrersitzlehne elektr. einstellbar', 'fahrersitzlehne elektr. einstellbar mit massagefunktion', 'fahrersitzlehne mit massage', 'lendenwirbelst\u00fctzen auf fahrerseite elektrisch einstellbar mit massagefunktion', 'linke vordersitzlehne mit massage', 'lordosenst\u00dctze fahrer\/beifahrer', 'lordosenstuetze vorne', 'vordersitze elektr. einstellbar', 'fahrersitzlehne elektr. mit massagefunktion', 'fahrersitzlehne mit massagefunktion', 'lendenwirbelst\u00fctzen vorn', 'lendenwirbelst\u00fctzen vorne', 'sitzverstellung elektr. mit memory', 'sitzverstellung elektr.mit memory', 'lordosenst\u00fctze', 'lordosenst\u00fctze fahrer/beifahrer', 'lordosenstuetzen vorne']),
+        FeatureNormalizer('fancy_driver_seat', ['fahrerlehne elektr. mit massagefunktion', 'lehneneinstellung elektrisch fahrersitz', 'fahrerlehne mit massagefunktion', 'fahrersitzlehne elektr. verstellbar', 'lendenwirbelstützen vorn auf fahrerseite elektrisch einstellbar', 'fahreristzlehne mit massage', 'lendenwirbelstütze elektr.', 'fahrersitz mit massagefunktion', 'sitzeinstellung elektr.', 'linke vordersitzlehne mit massagefunktion', 'lordosenstützen vorne', 'sportmultifunktions-lederlenkrad', 'massagefunktion', 'lordosenverstellung', 'massage- und memory fahrerseite',  'massage- und memoryfunktion fahrerseite', 'massage- und memoryfunktion auf fahrerseite', 'fahrersitzlehne elektr. mit massagefunkton', 'vordersitze elektrisch einstellbar', 'sporsitze', 'fahrersitzlehne elekt. mit massagefunktion', 'sitzeinstellung elektr. mit memory', 'massagefunktion auf fahrerseite','fahrersitzlehen elektr. einstellbar','fahrprogrammwahlschalter','fahrersitzlehne elektr. einstellbar mit massage','fahrersitz elektr. mit memoryfunktion','fahrersitz mit massage und memory', 'fahrersitz mit memory und massage', 'fahrersitzlehne elektr.', 'fahrersitzlehne elektr. einstellbar', 'fahrersitzlehne elektr. einstellbar mit massagefunktion', 'fahrersitzlehne mit massage', 'lendenwirbelst\u00fctzen auf fahrerseite elektrisch einstellbar mit massagefunktion', 'linke vordersitzlehne mit massage', 'lordosenst\u00dctze fahrer\/beifahrer', 'lordosenstuetze vorne', 'vordersitze elektr. einstellbar', 'fahrersitzlehne elektr. mit massagefunktion', 'fahrersitzlehne mit massagefunktion', 'lendenwirbelst\u00fctzen vorn', 'lendenwirbelst\u00fctzen vorne', 'sitzverstellung elektr. mit memory', 'sitzverstellung elektr.mit memory', 'lordosenst\u00fctze', 'lordosenst\u00fctze fahrer/beifahrer', 'lordosenstuetzen vorne']),
         FeatureNormalizer('driver_profile_assistant', ['Fahrprofilauswahl']),
-        FeatureNormalizer('light_dim_assistant', ['Fernlichtassistent', 'Innenspiegel automatisch abblendend']),
+        FeatureNormalizer('light_dim_assistant', ['innenspiegel autom abblendend', 'innenspiegel autom abblendend','außenspiegel autom abblendend', 'dynamische fernlichtregulierung', 'Fernlichtassistent', 'Innenspiegel automatisch abblendend']),
         FeatureNormalizer('front_collision_warn', ['kollisionswarner mit aktivem bremseingriff', 'Frontkollisionswarner', 'kollisionswarner']),
         FeatureNormalizer('trunk_electric', ['automatische heckklappenbetaetigung', 'heckklappe elektrisch', 'gepäckraumklappe elektrisch', 'Gep\u00e4ckraumklappe elektr.', 'Gep\u00e4cksraumklappe elektr.','']),
-        FeatureNormalizer('isofix', ['Isofix']),
+        FeatureNormalizer('isofix', ['isfoix', 'Isofix']),
         FeatureNormalizer('trunk_rollo', ['Laderaumrollo']),
-        FeatureNormalizer('led_lights', ['xenon-scheinwerfer', 'LED-Scheinwerfer', 'adaptiver led-scheinwerfer', 'led scheinwerfer']),
-        FeatureNormalizer('leather_seats', ['leder-alcantara sportsitze beheizbar', 'leder', 'teilleder sportsitze', 'teilleder', 'teillederausstattung', 'teilleder sportsitze beheizbar', 'leder/-alcantara sportsitze', 'ledersportsitze beheizbar', 'teilleder-ausstattung', 'Leder Sportsitze beheizbar', 'Leder-\/Alcantara', 'Leder-\/Alcantara Sportsitze beheizbar', 'Leder-Alcantara', 'Lederausstattung', 'Lederaustattung', 'leder/-alcantara', 'leder/-alcantara sportsitze beheizbar']),
-        FeatureNormalizer('fancy_steering_wheel', ['multifunktion fuer lenkrad', 'm m multifunktions-lederlenkrad', 'mutlifunktions-lederlenkrad', 'm multifunktions-lederlenkrad', 'sport-lederlenkrad', 'm lederlenkrad', 'multifunktionslederlenkrad', 'multifunktionslenkrad in leder mit schaltwippen','Lederlenkrad', 'Lenkradheizung', 'Multifunktions-Lederlenkrad', 'Multifunktions-Lederlenkrad mit Schaltwippen', 'Multifunktionslenkrad', 'Multifunktionslenkrad in Leder', 'Schaltwippen am Lenkrad', 'SPORT-MULTIFUNKTIONSLEDERLENKRAD']),
+        FeatureNormalizer('led_lights', ['scheinwerfer', 'led nebelscheinwerfer', 'xenon scheinwerfer', 'adaptive led-scheinwerfer', 'xenon-scheinwerfer', 'LED-Scheinwerfer', 'adaptiver led-scheinwerfer', 'led scheinwerfer']),
+        FeatureNormalizer('leather_seats', ['teilleder sporsitze beheizbar', 'leder-/alcantara sportsitze beheizbar', 'leder/alcantara', 'leder sporsitze beheizbar', 'teilledersitze beheizbar', 'leder-alcantara sportsitze beheizbar', 'leder', 'teilleder sportsitze', 'teilleder', 'teillederausstattung', 'teilleder sportsitze beheizbar', 'leder/-alcantara sportsitze', 'ledersportsitze beheizbar', 'teilleder-ausstattung', 'Leder Sportsitze beheizbar', 'Leder-\/Alcantara', 'Leder-\/Alcantara Sportsitze beheizbar', 'Leder-Alcantara', 'Lederausstattung', 'Lederaustattung', 'leder/-alcantara', 'leder/-alcantara sportsitze beheizbar']),
+        FeatureNormalizer('fancy_steering_wheel', ['r-line multifunktions-sportlederlenkrad mit schaltwippen', 'multifunktions-sportlederlenkrad', 'multifunktions-lederlenkrad beheizbar', 'multifunktions-lederlenrkad', 'multifunktionslenkrad in leder beheizbar', 'r-line multifunktions-sportlederlenkrad', 'multifunktion fuer lenkrad', 'm m multifunktions-lederlenkrad', 'mutlifunktions-lederlenkrad', 'm multifunktions-lederlenkrad', 'sport-lederlenkrad', 'm lederlenkrad', 'multifunktionslederlenkrad', 'multifunktionslenkrad in leder mit schaltwippen','Lederlenkrad', 'Lenkradheizung', 'Multifunktions-Lederlenkrad', 'Multifunktions-Lederlenkrad mit Schaltwippen', 'Multifunktionslenkrad', 'Multifunktionslenkrad in Leder', 'Schaltwippen am Lenkrad', 'SPORT-MULTIFUNKTIONSLEDERLENKRAD']),
         FeatureNormalizer('alloy_wheels', ['amg-leichtmetallräder', 'alur\u00e4der', 'Leichtmetallfelgen', 'LEICHTMETALLR\u00c4DER', 'Leichtmetallr\u00e4der', 'r-line alur\u00e4der']),
         FeatureNormalizer('sleepiness_sensor', ['müdigkeisterkennung', 'attention assist', 'M\u00fcdigkeitserkennung']),
-        FeatureNormalizer('hand_support_midle', ['mittelarmlehne vorn e', 'mittelarmlehne vorne & hinten', 'Mittelarmlehne vorn', 'Mittelarmlehne vorne', 'armauflage vorne verschiebbar', 'beifahrersitzlehne komplett umklappbar', 'mittelarmlhene vorn']),
+        FeatureNormalizer('hand_support_midle', ['fahrerlehne elektrisch einstellbar', 'fahrerlehne elektr. einstellbar', 'mittelarmlehne vorn e', 'mittelarmlehne vorne & hinten', 'Mittelarmlehne vorn', 'Mittelarmlehne vorne', 'armauflage vorne verschiebbar', 'beifahrersitzlehne komplett umklappbar', 'mittelarmlhene vorn']),
         FeatureNormalizer('navigation', ['naviagtion', 'navigationssystem', 'Navigation']),
         FeatureNormalizer('fog_lights', ['Nebelscheinwerfer', 'Nebelscheinwerfer und Abbiegelicht', 'LED-Nebelscheinwerfer', 'LED-Nebelscheinwefer']),
         FeatureNormalizer('reverse_camera', ['R\u00dcCKFAHRKAMERA', 'R\u00fcckfahrkamera']),
-        FeatureNormalizer('split_rear_bank', ['rücksitzbank asymmetrisch teilbar längs verschieb- und klappbar', 'rücksitzbank geteilt umklappbar', 'R\u00fccksitzbank umklappbar', 'R\u00fccksitzbank ungeteilt Lehne asymmetrisch geteilt umklappbar', 'R\u00fccksitzbank ungeteilt Lehne asymmetrisch umklappbar', 'R\u00fccksitzbanklehne asymmetrisch geteilt umklappbar', 'R\u00fccksitzlehne umklappbar', 'durchladem\u00f6glichkeit', 'r\u00fccksitzlehne asymmetrisch geteilt umklappbar', 'r\u00fccksitzlehne geteilt umklappbar']),
-        FeatureNormalizer('radio', ['Radio']),
+        FeatureNormalizer('split_rear_bank', ['rücksitzbank asymmetrisch umklappbar', 'rücksitzbank asymmetrisch teilbar längs verschieb- und klappbar', 'rücksitzbank geteilt umklappbar', 'R\u00fccksitzbank umklappbar', 'R\u00fccksitzbank ungeteilt Lehne asymmetrisch geteilt umklappbar', 'R\u00fccksitzbank ungeteilt Lehne asymmetrisch umklappbar', 'R\u00fccksitzbanklehne asymmetrisch geteilt umklappbar', 'R\u00fccksitzlehne umklappbar', 'durchladem\u00f6glichkeit', 'r\u00fccksitzlehne asymmetrisch geteilt umklappbar', 'r\u00fccksitzlehne geteilt umklappbar']),
+        FeatureNormalizer('radio', ['radio standard', 'Radio']),
         FeatureNormalizer('region_code', ['Regionscode']),
         FeatureNormalizer('windows_dimmed', ['sonnenschutzverglasung', 'Scheiben abgedunkelt']),
-        FeatureNormalizer('ligths_cleaning', ['scheinwerfer - reinigungsanlage', 'Scheinwerfer-Reinigungsanlage', 'SCHEINWERFER-WASCHANLAGE']),
-        FeatureNormalizer('servo_steering', ['Servolenkung']),
-        FeatureNormalizer('seat_heating', ['leder-sportsitze beheizbar', 'teilleder-sportsitze beheizbar', 'sitzheizung vorne & hinten', 'Sitzheizung', 'Sitzheizunug', 'Leder Sportsitze beheizbar', 'Leder-\/Alcantara Sportsitze beheizbar', 'Sportsitze beheizbar', 'leder/-alcantara sportsitze beheizbar']),
+        FeatureNormalizer('ligths_cleaning', ['scheinwerferreinigungsanlage', 'scheinwerfer - reinigungsanlage', 'Scheinwerfer-Reinigungsanlage', 'SCHEINWERFER-WASCHANLAGE']),
+        FeatureNormalizer('servo_steering', ['progressivlenkung', 'Servolenkung']),
+        FeatureNormalizer('seat_heating', ['vordersitze beheizbar', 'sporsitze beheizbar', 'leder-sportsitze beheizbar', 'teilleder-sportsitze beheizbar', 'sitzheizung vorne & hinten', 'Sitzheizung', 'Sitzheizunug', 'Leder Sportsitze beheizbar', 'Leder-\/Alcantara Sportsitze beheizbar', 'Sportsitze beheizbar', 'leder/-alcantara sportsitze beheizbar']),
         FeatureNormalizer('sun_rollo', ['sonnenschutzrollo an den türscheiben hinten', 'Sonnenschutzrollo']),
-        FeatureNormalizer('sport_seats', ['Sportsitze', 'Sportsitze beheizbar']),
-        FeatureNormalizer('traffic_line_assist', ['spurhalte- und spurwechselassistent', 'stauassistent','Spurhalteassistent', 'SPURVERLASSENSWARNER', 'Spurwechselassistent', 'SPURWECHSELWARNER', 'Spurwechselwarnung']),
-        FeatureNormalizer('start_stop', ['eco start-stop funktion', 'Start-\/Stopp-Technologie', 'Start-Stopp-System', 'Start-Stopp-System mit Bremsenergie-R\u00fcckgewinnung', 'Start\/Stop System', 'eco start-stop-funktion']),
-        FeatureNormalizer('phone_connector', ['telefonscnittstelle', 'Telefonschnittstelle', 'audi phone box']),
+        FeatureNormalizer('sport_seats', ['sportsitze vorn', 'Sportsitze', 'Sportsitze beheizbar']),
+        FeatureNormalizer('traffic_line_assist', ['spurhalte-assistent', 'spurhaltewarnung', 'spurhalte und spurwechselwarnung', 'spurhalte- spurwechsel- auspark- assistent', 'spurhalte- und spurwechselassistent', 'stauassistent','Spurhalteassistent', 'SPURVERLASSENSWARNER', 'Spurwechselassistent', 'SPURWECHSELWARNER', 'Spurwechselwarnung']),
+        FeatureNormalizer('start_stop', ['start/stop system', 'eco start-stop funktion', 'Start-\/Stopp-Technologie', 'Start-Stopp-System', 'Start-Stopp-System mit Bremsenergie-R\u00fcckgewinnung', 'Start\/Stop System', 'eco start-stop-funktion']),
+        FeatureNormalizer('phone_connector', ['telefonschittstelle', 'telefonscnittstelle', 'Telefonschnittstelle', 'audi phone box']),
         FeatureNormalizer('tempomat', ['Tempomat']),
         FeatureNormalizer('dead_spot_warn', ['tot-winkel warner', 'totwinkel-assistent', 'totwinkelassistent', 'Toter Winkel-Warner', 'Totwinkel-Warner','totwinkelerkennung']),
         FeatureNormalizer('traffic_sign_recognition', ['Verkehrszeichenerkennung']),
         FeatureNormalizer('electronic_immobiliser', ['wegfahrsperre elektr.', 'Wegfahrsperre elektr', 'Wegfahrsperre elektronisch']),
-        FeatureNormalizer('wireless_charge', ['wirelss charging', 'Wireless charging', 'Wireless-Charging']),
+        FeatureNormalizer('wireless_charge', ['wireless charigng', 'wirelss charging', 'Wireless charging', 'Wireless-Charging']),
         FeatureNormalizer('central_lock', ['Zentralverriegelung']),
         FeatureNormalizer('storage_organisation', ['ablagenpaket']),
-        FeatureNormalizer('active_info_display', ['digital-tacho', 'active info display']),
-        FeatureNormalizer('automatic', ['automatik', 'automatikgetriebe']),
-        FeatureNormalizer('fancy_color', ['pyramid gold metallic', 'melbournerot metallic', 'mineralweiss metallic', 'sparkling brown metallic', 'cavansitblau - metalliclack', 'superfarbe - pyramid gold metallic', 'megafarbe - blue dusk metallic', 'm hochglanz shadow line', 'orientbraun - metalliclack', 'platinsilber metallic', 'black rubin', 'atlantik blue metallic', 'black sapphire metallic', 'deep black perleffekt', 'tornadorot', 'reflexsilber metallic', 'mineralgrau metallic']),
+        FeatureNormalizer('active_info_display', ['digital cockpit pro', 'digital-cockpit pro', 'multifunktionales instrumentendisplay', 'digital-tacho', 'active info display']),
+        FeatureNormalizer('automatic', ['7-gang-automatikgetriebe', 'automatik', 'automatikgetriebe']),
+        FeatureNormalizer('fancy_color', ['indiumgrau metallic', 'atlantic blue metallic', 'superfarbe black rubin', 'pure white', 'white silver metallic', 'uranograu', 'pyramid gold metallic', 'melbournerot metallic', 'mineralweiss metallic', 'sparkling brown metallic', 'cavansitblau - metalliclack', 'superfarbe - pyramid gold metallic', 'megafarbe - blue dusk metallic', 'm hochglanz shadow line', 'orientbraun - metalliclack', 'platinsilber metallic', 'black rubin', 'atlantik blue metallic', 'black sapphire metallic', 'deep black perleffekt', 'tornadorot', 'reflexsilber metallic', 'mineralgrau metallic']),
         FeatureNormalizer('hagel_damage', ['hagelschaden']),
         FeatureNormalizer('head_up_display', ['head-up-display', 'head-up display']),
-        FeatureNormalizer('fancy_sound', ['harman/kardon', 'soundsystem harman/kardon', 'harman kardon soundsystem', 'harman/kardon soundsystem', 'harman/kardon surround sound system', 'hifi lautsprechersystem']),
+        FeatureNormalizer('fancy_sound', ['dynaudio soundsystem', 'harman/kardon', 'soundsystem harman/kardon', 'harman kardon soundsystem', 'harman/kardon soundsystem', 'harman/kardon surround sound system', 'hifi lautsprechersystem']),
         FeatureNormalizer('front_window_heating', ['frontscheibe drahtlos beheizbar']),
         FeatureNormalizer('smart_key_unlock', ['komortzugang', 'direktstart', 'keyless-start', 'komfortzugang']),
         FeatureNormalizer('big_gas_tank', ['grösserer kraftstofftank', 'groesserer kraftstofftank', 'kraftstoffbehaelter mit grossem inhalt', 'grosser scr-tankbehaelter', 'kraftstoffbeh\u00e4lter mit grossem inhalt']),
-        FeatureNormalizer('panorama_roof', ['panorama glasdach', 'panorama-/schiebedach', 'panorama-glasdach', 'panorama-schiebedach', 'schiebedach']),
-        FeatureNormalizer('surround_view', ['surround view', '360-grad kamera']),
+        FeatureNormalizer('panorama_roof', ['panorama schiebedach', 'panorama-ausstell-/schiebedach', 'panorama/-schiebedach', 'panorama glasdach', 'panorama-/schiebedach', 'panorama-glasdach', 'panorama-schiebedach', 'schiebedach']),
+        FeatureNormalizer('surround_view', ['360 grad kamera', 'surround view', '360-grad kamera']),
         FeatureNormalizer('speed_limit_info', ['speed limit info']),
     ]
 
@@ -95,8 +91,6 @@ conn = None
 
 def main(debugFlag):
     assert conn != None
-
-    r = re.compile("letzte wartung bei (\d*[.,]?\d*) km")
 
     PASS_THROUGH_FIELDS = ['manufacturer', 'modelgroup', 'model', 'cashprice_raw', 'thumbnail',  'vin', 'parking_place', 'location', 'tag', 'id']
 
@@ -118,7 +112,7 @@ def main(debugFlag):
             scan_date = parseDateFromJsonFileName(file_name)
 
             if scan_date in already_scanned:
-                print("Ignoring since it was already scanned: " + file_name)
+                # print("Ignoring since it was already scanned: " + file_name)
                 continue
            
             flat = process_date_file(FEATURE_NORMALIZERS, PASS_THROUGH_FIELDS, file_name)
@@ -167,7 +161,7 @@ def process_date_file(FEATURE_NORMALIZERS, PASS_THROUGH_FIELDS, scan_date):
 
         # parse numbers for some feature
         processed_car['kw'] = int(car['kw'].split(" ")[0])
-        processed_car['date_order'] = datetime.strptime(car['date_order'], '%Y-%m-%dT%H:%M:%S.%fZ').timestamp()
+        processed_car['date_order'] = datetime.strptime(car['date_order'], '%Y-%m-%dT%H:%M:%S.%fZ').timestamp() if car['date_order'] is not None else None
         processed_car['licensedate'] = datetime.strptime(car['licensedate'], '%Y-%m-%d').timestamp()
         processed_car['mileage_km'] = int(car['mileage'].replace(".", "").split(" ")[0])
         processed_car['scan_date'] = datetime.strptime(scan_date.split(".")[0], '%d-%m-%Y').timestamp()
@@ -191,10 +185,10 @@ def process_date_file(FEATURE_NORMALIZERS, PASS_THROUGH_FIELDS, scan_date):
                     detected = True
 
             if detected is False:
-                if "letzte wartung" in feature:
+                if "letzte wartung" in feature or "letzt wartung" in feature:
                     remove_dot_string = feature.replace(".", "")
                     # creative regex string, since there are sometimes typos on the web page in the description
-                    last_maintenance_km = re.search(r"letzte wartung bv?ei (\d*) km", remove_dot_string).group(1)
+                    last_maintenance_km = re.search(r"letzte? wartung bv?i?e?i? (\d*) km", remove_dot_string).group(1)
                     processed_car['last_maintenance_km'] = int(last_maintenance_km)
                 else:
                     # undetected features go into a missed list for monitoring
