@@ -1,0 +1,836 @@
+[
+    {
+      "FIELD": "usb_aux",
+      "LOOKUP": [
+        "usb und aux anschluss",
+        "usb-schnittstelle & aux-ix",
+        "2 usb schnittstellen & aux in",
+        "usb schnittstelle",
+        "usb-schnittstelle & aux-in",
+        "usb schnittstelle & aux in",
+        "usb-schnittstellen inkl aux-in",
+        "usb & aux-in",
+        "usb-schnittstellen",
+        "aux-in und usb",
+        "2 usb-c-schnittstellen",
+        "2 usb-schnittstellen",
+        "2 usb-schnittstellen & aux-in",
+        "2 usb-schnittstellen aux-in",
+        "aux-in",
+        "usb-schnittstelle",
+        "usb-schnittstelle inkl. aux-in",
+        "usb-schnittstellen aux-in",
+        "usb-schnittstelle aux-in",
+        "usb-schnittstelle auch f\u00fcr ipod/iphone"
+      ]
+    },
+    {
+      "FIELD": "tires_fancy",
+      "LOOKUP": [
+        "amg-r\u00e4der 18 zoll 225 40 18",
+        "17 zoll r\u00e4der 225 45 17",
+        "18 zoll r\u00e4der 235 45 18",
+        "18 zoll amg r\u00e4der",
+        "19 zoll r\u00e4der 235 40 19"
+      ]
+    },
+    {
+      "FIELD": "klima",
+      "LOOKUP": [
+        "3 zonen-klimaautomatik",
+        "climatronic",
+        "3-zonen klimaautomtik",
+        "kimaautomatik",
+        "3 zonen klimaanlage",
+        "3 zonen klima",
+        "3-zonen klimaautomatik",
+        "klimaanlage",
+        "klimaautomatik",
+        "3-zonne klimaautomatik",
+        "standheizung und -l\u00fcftung"
+      ]
+    },
+    {
+      "FIELD": "abs",
+      "LOOKUP": [
+        "abs"
+      ]
+    },
+    {
+      "FIELD": "active_tempomat",
+      "LOOKUP": [
+        "autoamtische-distanzregelung",
+        "abstandsradar",
+        "automatische distanzregelung"
+      ]
+    },
+    {
+      "FIELD": "airbag",
+      "LOOKUP": [
+        "seitenairbags",
+        "kopfairbagsystem f\u00fcr front- und fondpassagiere inkl. seitenairbags vorn",
+        "kopfairbagsystem inkl. seitenairbags vorn",
+        "airbag",
+        "beifahrer airbag"
+      ]
+    },
+    {
+      "FIELD": "airbag_deactivate_passenger",
+      "LOOKUP": [
+        "beifahrerairbag-deaktivierbar",
+        "deaktivierungsschalter f\u00fcr beifahrerairbag",
+        "airbag deaktivierung beifahrer",
+        "beifahrerairbag deaktivierbar",
+        "beifahrerairbag-deaktivierung",
+        "beifahrerairbag deaktiviebrar"
+      ]
+    },
+    {
+      "FIELD": "alarm",
+      "LOOKUP": [
+        "alarmanlage"
+      ]
+    },
+    {
+      "FIELD": "four_wheel_drive",
+      "LOOKUP": [
+        "allrad",
+        "allradantrieb"
+      ]
+    },
+    {
+      "FIELD": "trailer_hitch",
+      "LOOKUP": [
+        "anh\u00e4ngekupplung",
+        "anh\u00e4ngerkupplung",
+        "anh\u00e4ngevorrichtung anklappbar",
+        "anhaengerkupplung"
+      ]
+    },
+    {
+      "FIELD": "trailer_hitch_preparation",
+      "LOOKUP": [
+        "anhaengevorrichtung",
+        "anh\u00e4ngevorrichtung"
+      ]
+    },
+    {
+      "FIELD": "apple_carplay",
+      "LOOKUP": [
+        "carplay",
+        "apple carplay"
+      ]
+    },
+    {
+      "FIELD": "side_mirror_electric",
+      "LOOKUP": [
+        "au\u00dfenspiegel beheizbar",
+        "au\u00dfenspiegel elektr. anklappbar",
+        "au\u00dfenspiegel elektr. einstell- anklapp- beheizbar",
+        "au\u00dfenspiegel heizbar und elektrisch verstellbar",
+        "innen- und aussenspiegel automat. abblendbar",
+        "au\u00dfenspiegel elektrisch einstell-/anklapp-/beheizbar",
+        "au\u00dfenspiegel elektr. einstell- und beheizbar",
+        "au\u00dfenspiegel elektrisch einstell- anklapp- und beheizbar",
+        "au\u00dfenspiegel elektr. einstell- beheizbar mit memoryfunktion",
+        "au\u00dfenspiegel elektrisch einstell- und beheizbar auf fahrerseite automatisch abblendend",
+        "au\u00dfenspiegel elektrisch einstell- anklappbar",
+        "aussenspiegel li. u. re. abklappbar",
+        "au\u00dfenspiegel elektr. einstell- beheiz- und anklappbar",
+        "au\u00dfenspiegel auf fahrerseite automatisch abblendend",
+        "au\u00dfenspiegel anklapp- und beheizbar",
+        "au\u00dfenspiegel anklapp und beheizbar",
+        "au\u00dfenspiegel anklapp- und beheizbar auf fahrerseite abblendend",
+        "au\u00dfenspiegel elektr. anklapp- und beheizbar",
+        "au\u00dfenspiegel elektrisch einstell- und beheizbar",
+        "aussenspiegel elektr. beheizbar",
+        "aussenspiegel elektrisch",
+        "au\u00dfenspiegel elektrisch anklappbar",
+        "au\u00dfenspiegel elektrisch einstell- anklapp- beheizbar"
+      ]
+    },
+    {
+      "FIELD": "parking_assistant",
+      "LOOKUP": [
+        "aussparkassistent",
+        "einparkhilfe vorne vorne & hinten",
+        "parklenkassistent und einparkhilfe",
+        "einparkhilfe vorne & hitnen",
+        "einpakrhilfe vorne & hinten",
+        "auspark- und parklenkassistent",
+        "einparkhilfe vorn & hinten",
+        "einparkhilfe vorne  & hinten",
+        "einaparkhilfe vorne & hinten",
+        "einparkhilfe hi. + vo.",
+        "parkassist",
+        "parklenkassistent",
+        "parklenkassistent inkl. einparkhilfe",
+        "einparkhilfe vorne und hinten",
+        "ausparkassistent",
+        "einparkhilfe",
+        "einparkhilfe  vorne & hinten",
+        "einparkhilfe vorn und hinten",
+        "einparkhilfe vorne & hinten",
+        "aktiver parkassistent",
+        "einparkhilfe hinten",
+        "parkassistent"
+      ]
+    },
+    {
+      "FIELD": "other",
+      "LOOKUP": [
+        "r-line",
+        "federung hinten mit vollautomatischem niveauregulierungssystem",
+        "real time traffic information",
+        "reifenreparatur-set",
+        "fahrerlebnisschalter inkl. eco pro",
+        "standheizung",
+        "unfall fahrzeug",
+        "standheizung/-l\u00fcftung",
+        "verkauf nur an gewerbe",
+        "===",
+        "variable sportlenkung",
+        "r-line interieur",
+        "sportfahwerk",
+        "r-line exterieur",
+        "schiebet\u00fcr links & rechts",
+        "schiebet\u00fcr links",
+        "amg sportpaket",
+        "dc-schnellladen",
+        "waermepumpe",
+        "ac-laden professional",
+        "schiebet\u00fcr rechts",
+        "w\u00e4rmepumpe",
+        "m spotpaket",
+        "aus damenhand",
+        "m sportpaket",
+        "luxury-line",
+        "sportpaket amg",
+        "7-sitzer",
+        "luxury line",
+        "m-sportpaket",
+        "m \u00e4rodynamikpaket",
+        "m sportfahrwerk",
+        "durchladesystem",
+        "klapptische an den r\u00fcckseiten der vordersitze",
+        "nightpaket",
+        "sportpaket",
+        "avantgarde-paket exterieur",
+        "eu spezifische zusatzumfaenge",
+        "nigthpaket",
+        "amg-sportpaket",
+        "luxury-paket interieur",
+        "anh\u00e4ngerrangierassistent",
+        "schlechtwegefahrwerk",
+        "durchlademoeglichkeit",
+        "sportfahrwerk",
+        "basis",
+        "crimson red metallic",
+        "sport line",
+        "sportline"
+      ]
+    },
+    {
+      "FIELD": "hill_assistant",
+      "LOOKUP": [
+        "berganfahrassistent"
+      ]
+    },
+    {
+      "FIELD": "bluetooth",
+      "LOOKUP": [
+        "bluetooth",
+        "bluetoth"
+      ]
+    },
+    {
+      "FIELD": "board_computer",
+      "LOOKUP": [
+        "bordcomputer"
+      ]
+    },
+    {
+      "FIELD": "break_assistant",
+      "LOOKUP": [
+        "bremsassistent"
+      ]
+    },
+    {
+      "FIELD": "roof_rails",
+      "LOOKUP": [
+        "dachreling",
+        "dachreling schwarz",
+        "dachreling silber eloxiert"
+      ]
+    },
+    {
+      "FIELD": "theft_alarm",
+      "LOOKUP": [
+        "diebstahlwarnanlage"
+      ]
+    },
+    {
+      "FIELD": "digital_radio",
+      "LOOKUP": [
+        "digitaler radioempfang"
+      ]
+    },
+    {
+      "FIELD": "drive_assistant",
+      "LOOKUP": [
+        "active guard",
+        "kollisionswarner m. aktivem bremseingriff",
+        "anfahrhilfe-/ abfahrhilfe",
+        "driving assistant"
+      ]
+    },
+    {
+      "FIELD": "electric_windows",
+      "LOOKUP": [
+        "elektr. fensterheber"
+      ]
+    },
+    {
+      "FIELD": "electric_parking_brake",
+      "LOOKUP": [
+        "auto-hold-funktion",
+        "parkbremse elektrisch inkl. auto-hold-funktion",
+        "parkbremse elektr.",
+        "elektrische parkbremse",
+        "elektronische parkbremse inkl. auto-hold-funktion",
+        "parkbremse elektr. inkl. auto-hold-funktion",
+        "parkbremse elektrisch"
+      ]
+    },
+    {
+      "FIELD": "esp",
+      "LOOKUP": [
+        "elektronisches stabilit\u00e4tsprogramm"
+      ]
+    },
+    {
+      "FIELD": "fancy_driver_seat",
+      "LOOKUP": [
+        "fahrerlehne elektr. mit massagefunktion",
+        "lehneneinstellung elektrisch fahrersitz",
+        "fahrerlehne mit massagefunktion",
+        "fahrersitzlehne elektr. verstellbar",
+        "lendenwirbelst\u00fctzen vorn auf fahrerseite elektrisch einstellbar",
+        "fahreristzlehne mit massage",
+        "lendenwirbelst\u00fctze elektr.",
+        "fahrersitz mit massagefunktion",
+        "sitzeinstellung elektr.",
+        "linke vordersitzlehne mit massagefunktion",
+        "lordosenst\u00fctzen vorne",
+        "sportmultifunktions-lederlenkrad",
+        "massagefunktion",
+        "lordosenverstellung",
+        "massage- und memory fahrerseite",
+        "massage- und memoryfunktion fahrerseite",
+        "massage- und memoryfunktion auf fahrerseite",
+        "fahrersitzlehne elektr. mit massagefunkton",
+        "vordersitze elektrisch einstellbar",
+        "sporsitze",
+        "fahrersitzlehne elekt. mit massagefunktion",
+        "sitzeinstellung elektr. mit memory",
+        "massagefunktion auf fahrerseite",
+        "fahrersitzlehen elektr. einstellbar",
+        "fahrprogrammwahlschalter",
+        "fahrersitzlehne elektr. einstellbar mit massage",
+        "fahrersitz elektr. mit memoryfunktion",
+        "fahrersitz mit massage und memory",
+        "fahrersitz mit memory und massage",
+        "fahrersitzlehne elektr.",
+        "fahrersitzlehne elektr. einstellbar",
+        "fahrersitzlehne elektr. einstellbar mit massagefunktion",
+        "fahrersitzlehne mit massage",
+        "lendenwirbelst\u00fctzen auf fahrerseite elektrisch einstellbar mit massagefunktion",
+        "linke vordersitzlehne mit massage",
+        "lordosenst\u00fctze fahrer\\/beifahrer",
+        "lordosenstuetze vorne",
+        "vordersitze elektr. einstellbar",
+        "fahrersitzlehne elektr. mit massagefunktion",
+        "fahrersitzlehne mit massagefunktion",
+        "lendenwirbelst\u00fctzen vorn",
+        "lendenwirbelst\u00fctzen vorne",
+        "sitzverstellung elektr. mit memory",
+        "sitzverstellung elektr.mit memory",
+        "lordosenst\u00fctze",
+        "lordosenst\u00fctze fahrer/beifahrer",
+        "lordosenstuetzen vorne"
+      ]
+    },
+    {
+      "FIELD": "driver_profile_assistant",
+      "LOOKUP": [
+        "fahrprofilauswahl"
+      ]
+    },
+    {
+      "FIELD": "light_dim_assistant",
+      "LOOKUP": [
+        "innenspiegel autom abblendend",
+        "innenspiegel autom abblendend",
+        "au\u00dfenspiegel autom abblendend",
+        "dynamische fernlichtregulierung",
+        "fernlichtassistent",
+        "innenspiegel automatisch abblendend"
+      ]
+    },
+    {
+      "FIELD": "front_collision_warn",
+      "LOOKUP": [
+        "kollisionswarner mit aktivem bremseingriff",
+        "frontkollisionswarner",
+        "kollisionswarner"
+      ]
+    },
+    {
+      "FIELD": "trunk_electric",
+      "LOOKUP": [
+        "automatische heckklappenbetaetigung",
+        "heckklappe elektrisch",
+        "gep\u00e4ckraumklappe elektrisch",
+        "gep\u00e4ckraumklappe elektr.",
+        "gep\u00e4cksraumklappe elektr.",
+        ""
+      ]
+    },
+    {
+      "FIELD": "isofix",
+      "LOOKUP": [
+        "isfoix",
+        "isofix"
+      ]
+    },
+    {
+      "FIELD": "trunk_rollo",
+      "LOOKUP": [
+        "laderaumrollo"
+      ]
+    },
+    {
+      "FIELD": "led_lights",
+      "LOOKUP": [
+        "scheinwerfer",
+        "led nebelscheinwerfer",
+        "xenon scheinwerfer",
+        "adaptive led-scheinwerfer",
+        "xenon-scheinwerfer",
+        "led-scheinwerfer",
+        "adaptiver led-scheinwerfer",
+        "led scheinwerfer"
+      ]
+    },
+    {
+      "FIELD": "leather_seats",
+      "LOOKUP": [
+        "teilleder sporsitze beheizbar",
+        "leder-/alcantara sportsitze beheizbar",
+        "leder/alcantara",
+        "leder sporsitze beheizbar",
+        "teilledersitze beheizbar",
+        "leder-alcantara sportsitze beheizbar",
+        "leder",
+        "teilleder sportsitze",
+        "teilleder",
+        "teillederausstattung",
+        "teilleder sportsitze beheizbar",
+        "leder/-alcantara sportsitze",
+        "ledersportsitze beheizbar",
+        "teilleder-ausstattung",
+        "leder sportsitze beheizbar",
+        "leder-\\/alcantara",
+        "leder-\\/alcantara sportsitze beheizbar",
+        "leder-alcantara",
+        "lederausstattung",
+        "lederaustattung",
+        "leder/-alcantara",
+        "leder/-alcantara sportsitze beheizbar"
+      ]
+    },
+    {
+      "FIELD": "fancy_steering_wheel",
+      "LOOKUP": [
+        "r-line multifunktions-sportlederlenkrad mit schaltwippen",
+        "multifunktions-sportlederlenkrad",
+        "multifunktions-lederlenkrad beheizbar",
+        "multifunktions-lederlenrkad",
+        "multifunktionslenkrad in leder beheizbar",
+        "r-line multifunktions-sportlederlenkrad",
+        "multifunktion fuer lenkrad",
+        "m m multifunktions-lederlenkrad",
+        "mutlifunktions-lederlenkrad",
+        "m multifunktions-lederlenkrad",
+        "sport-lederlenkrad",
+        "m lederlenkrad",
+        "multifunktionslederlenkrad",
+        "multifunktionslenkrad in leder mit schaltwippen",
+        "lederlenkrad",
+        "lenkradheizung",
+        "multifunktions-lederlenkrad",
+        "multifunktions-lederlenkrad mit schaltwippen",
+        "multifunktionslenkrad",
+        "multifunktionslenkrad in leder",
+        "schaltwippen am lenkrad",
+        "sport-multifunktionslederlenkrad"
+      ]
+    },
+    {
+      "FIELD": "alloy_wheels",
+      "LOOKUP": [
+        "amg-leichtmetallr\u00e4der",
+        "alur\u00e4der",
+        "leichtmetallfelgen",
+        "leichtmetallr\u00e4der",
+        "leichtmetallr\u00e4der",
+        "r-line alur\u00e4der"
+      ]
+    },
+    {
+      "FIELD": "sleepiness_sensor",
+      "LOOKUP": [
+        "m\u00fcdigkeisterkennung",
+        "attention assist",
+        "m\u00fcdigkeitserkennung"
+      ]
+    },
+    {
+      "FIELD": "hand_support_midle",
+      "LOOKUP": [
+        "fahrerlehne elektrisch einstellbar",
+        "fahrerlehne elektr. einstellbar",
+        "mittelarmlehne vorn e",
+        "mittelarmlehne vorne & hinten",
+        "mittelarmlehne vorn",
+        "mittelarmlehne vorne",
+        "armauflage vorne verschiebbar",
+        "beifahrersitzlehne komplett umklappbar",
+        "mittelarmlhene vorn"
+      ]
+    },
+    {
+      "FIELD": "navigation",
+      "LOOKUP": [
+        "navigaiton",
+        "naviagtion",
+        "navigationssystem",
+        "navigation"
+      ]
+    },
+    {
+      "FIELD": "fog_lights",
+      "LOOKUP": [
+        "nebelscheinwerfer",
+        "nebelscheinwerfer und abbiegelicht",
+        "led-nebelscheinwerfer",
+        "led-nebelscheinwefer"
+      ]
+    },
+    {
+      "FIELD": "reverse_camera",
+      "LOOKUP": [
+        "r\u00fcckfahrkamera",
+        "r\u00fcckfahrkamera"
+      ]
+    },
+    {
+      "FIELD": "split_rear_bank",
+      "LOOKUP": [
+        "r\u00fccksitzbank asymmetrisch umklappbar",
+        "r\u00fccksitzbank asymmetrisch teilbar l\u00e4ngs verschieb- und klappbar",
+        "r\u00fccksitzbank geteilt umklappbar",
+        "r\u00fccksitzbank umklappbar",
+        "r\u00fccksitzbank ungeteilt lehne asymmetrisch geteilt umklappbar",
+        "r\u00fccksitzbank ungeteilt lehne asymmetrisch umklappbar",
+        "r\u00fccksitzbanklehne asymmetrisch geteilt umklappbar",
+        "r\u00fccksitzlehne umklappbar",
+        "durchladem\u00f6glichkeit",
+        "r\u00fccksitzlehne asymmetrisch geteilt umklappbar",
+        "r\u00fccksitzlehne geteilt umklappbar"
+      ]
+    },
+    {
+      "FIELD": "radio",
+      "LOOKUP": [
+        "radio standard",
+        "radio"
+      ]
+    },
+    {
+      "FIELD": "region_code",
+      "LOOKUP": [
+        "regionscode"
+      ]
+    },
+    {
+      "FIELD": "windows_dimmed",
+      "LOOKUP": [
+        "sonnenschutzverglasung",
+        "scheiben abgedunkelt"
+      ]
+    },
+    {
+      "FIELD": "ligths_cleaning",
+      "LOOKUP": [
+        "scheinwerferreinigungsanlage",
+        "scheinwerfer - reinigungsanlage",
+        "scheinwerfer-reinigungsanlage",
+        "scheinwerfer-waschanlage"
+      ]
+    },
+    {
+      "FIELD": "servo_steering",
+      "LOOKUP": [
+        "progressivlenkung",
+        "servolenkung"
+      ]
+    },
+    {
+      "FIELD": "seat_heating",
+      "LOOKUP": [
+        "vordersitze beheizbar",
+        "sporsitze beheizbar",
+        "leder-sportsitze beheizbar",
+        "teilleder-sportsitze beheizbar",
+        "sitzheizung vorne & hinten",
+        "sitzheizung",
+        "sitzheizunug",
+        "leder sportsitze beheizbar",
+        "leder-\\/alcantara sportsitze beheizbar",
+        "sportsitze beheizbar",
+        "leder/-alcantara sportsitze beheizbar"
+      ]
+    },
+    {
+      "FIELD": "sun_rollo",
+      "LOOKUP": [
+        "sonnenschutzrollo an den t\u00fcrscheiben hinten",
+        "sonnenschutzrollo"
+      ]
+    },
+    {
+      "FIELD": "sport_seats",
+      "LOOKUP": [
+        "sportsitze vorn",
+        "sportsitze",
+        "sportsitze beheizbar"
+      ]
+    },
+    {
+      "FIELD": "traffic_line_assist",
+      "LOOKUP": [
+        "spurhalte- stau- ausparkassistent",
+        "spurhalte-assistent",
+        "spurhaltewarnung",
+        "spurhalte und spurwechselwarnung",
+        "spurhalte- spurwechsel- auspark- assistent",
+        "spurhalte- und spurwechselassistent",
+        "stauassistent",
+        "spurhalteassistent",
+        "spurverlassenswarner",
+        "spurwechselassistent",
+        "spurwechselwarner",
+        "spurwechselwarnung"
+      ]
+    },
+    {
+      "FIELD": "start_stop",
+      "LOOKUP": [
+        "start/stop system",
+        "eco start-stop funktion",
+        "start-\\/stopp-technologie",
+        "start-stopp-system",
+        "start-stopp-system mit bremsenergie-r\u00fcckgewinnung",
+        "start\\/stop system",
+        "eco start-stop-funktion"
+      ]
+    },
+    {
+      "FIELD": "phone_connector",
+      "LOOKUP": [
+        "telefonschittstelle",
+        "telefonscnittstelle",
+        "telefonschnittstelle",
+        "audi phone box"
+      ]
+    },
+    {
+      "FIELD": "tempomat",
+      "LOOKUP": [
+        "tempomat"
+      ]
+    },
+    {
+      "FIELD": "dead_spot_warn",
+      "LOOKUP": [
+        "tot-winkel warner",
+        "totwinkel-assistent",
+        "totwinkelassistent",
+        "toter winkel-warner",
+        "totwinkel-warner",
+        "totwinkelerkennung"
+      ]
+    },
+    {
+      "FIELD": "traffic_sign_recognition",
+      "LOOKUP": [
+        "verkehrszeichenerkennung"
+      ]
+    },
+    {
+      "FIELD": "electronic_immobiliser",
+      "LOOKUP": [
+        "wegfahrsperre elektr.",
+        "wegfahrsperre elektr",
+        "wegfahrsperre elektronisch"
+      ]
+    },
+    {
+      "FIELD": "wireless_charge",
+      "LOOKUP": [
+        "wirless charging",
+        "wireless charigng",
+        "wirelss charging",
+        "wireless charging",
+        "wireless-charging"
+      ]
+    },
+    {
+      "FIELD": "central_lock",
+      "LOOKUP": [
+        "zentralverriegelung"
+      ]
+    },
+    {
+      "FIELD": "storage_organisation",
+      "LOOKUP": [
+        "ablagenpaket"
+      ]
+    },
+    {
+      "FIELD": "active_info_display",
+      "LOOKUP": [
+        "digital cockpit pro",
+        "digital-cockpit pro",
+        "multifunktionales instrumentendisplay",
+        "digital-tacho",
+        "active info display"
+      ]
+    },
+    {
+      "FIELD": "automatic",
+      "LOOKUP": [
+        "auotmatik",
+        "7-gang-automatikgetriebe",
+        "automatik",
+        "automatikgetriebe"
+      ]
+    },
+    {
+      "FIELD": "fancy_color",
+      "LOOKUP": [
+        "mangangrau metallic",
+        "indiumgrau metallic",
+        "atlantic blue metallic",
+        "superfarbe black rubin",
+        "pure white",
+        "white silver metallic",
+        "uranograu",
+        "pyramid gold metallic",
+        "melbournerot metallic",
+        "mineralweiss metallic",
+        "sparkling brown metallic",
+        "cavansitblau - metalliclack",
+        "superfarbe - pyramid gold metallic",
+        "megafarbe - blue dusk metallic",
+        "m hochglanz shadow line",
+        "orientbraun - metalliclack",
+        "platinsilber metallic",
+        "black rubin",
+        "atlantik blue metallic",
+        "black sapphire metallic",
+        "deep black perleffekt",
+        "tornadorot",
+        "reflexsilber metallic",
+        "mineralgrau metallic"
+      ]
+    },
+    {
+      "FIELD": "hagel_damage",
+      "LOOKUP": [
+        "hagelschaden"
+      ]
+    },
+    {
+      "FIELD": "head_up_display",
+      "LOOKUP": [
+        "head-up-display",
+        "head-up display"
+      ]
+    },
+    {
+      "FIELD": "fancy_sound",
+      "LOOKUP": [
+        "dynaudio soundsystem",
+        "harman/kardon",
+        "soundsystem harman/kardon",
+        "harman kardon soundsystem",
+        "harman/kardon soundsystem",
+        "harman/kardon surround sound system",
+        "hifi lautsprechersystem"
+      ]
+    },
+    {
+      "FIELD": "front_window_heating",
+      "LOOKUP": [
+        "frontscheibe drahtlos beheizbar"
+      ]
+    },
+    {
+      "FIELD": "smart_key_unlock",
+      "LOOKUP": [
+        "komortzugang",
+        "direktstart",
+        "keyless-start",
+        "komfortzugang"
+      ]
+    },
+    {
+      "FIELD": "big_gas_tank",
+      "LOOKUP": [
+        "gr\u00f6sserer kraftstofftank",
+        "groesserer kraftstofftank",
+        "kraftstoffbehaelter mit grossem inhalt",
+        "grosser scr-tankbehaelter",
+        "kraftstoffbeh\u00e4lter mit grossem inhalt"
+      ]
+    },
+    {
+      "FIELD": "panorama_roof",
+      "LOOKUP": [
+        "panorama schiebedach",
+        "panorama-ausstell-/schiebedach",
+        "panorama/-schiebedach",
+        "panorama glasdach",
+        "panorama-/schiebedach",
+        "panorama-glasdach",
+        "panorama-schiebedach",
+        "schiebedach"
+      ]
+    },
+    {
+      "FIELD": "surround_view",
+      "LOOKUP": [
+        "360 grad kamera",
+        "surround view",
+        "360-grad kamera"
+      ]
+    },
+    {
+      "FIELD": "speed_limit_info",
+      "LOOKUP": [
+        "speed limit info"
+      ]
+    }
+  ]
