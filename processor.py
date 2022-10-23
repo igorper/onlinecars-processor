@@ -37,9 +37,12 @@ def main(debugFlag):
 
     cur = conn.cursor()
 
+    # when creating a parser class we can pass in: debugFlag, already_scanned
     if debugFlag:
         all_files = ['25-06-2022.json']
         already_scanned = []
+    
+    # should be a method in the parser class
     try:
         for file_name in all_files:
             if file_name == ".DS_Store":
@@ -52,6 +55,7 @@ def main(debugFlag):
                 # print("Ignoring since it was already scanned: " + file_name)
                 continue
            
+            # define FEATURE_NORMALIZERS and PASS_THROUGH_FIELDS as dependencies of parser class
             flat = process_date_file(FEATURE_NORMALIZERS, PASS_THROUGH_FIELDS, file_name)
 
             if flat == None:
@@ -78,6 +82,8 @@ def insert_to_database(cur, flat):
 
 def process_date_file(FEATURE_NORMALIZERS, PASS_THROUGH_FIELDS, scan_date):
     print(">> Processing file " + scan_date)
+    # a different implementation can just pass out some dummy data
+    # we can also have this unit testable by providing a single file (or in mem representation) and checking in the end that expected values are correct
     with open('input/' + scan_date, encoding="utf8") as f:
         data = json.load(f)
 
@@ -299,6 +305,7 @@ def printAllFilesInFolder():
     all_files = next(walk("input"), (None, None, []))[2]
     print(all_files)
 
+# move to separate file
 def alreadyPresentDays():
     assert conn != None
 
