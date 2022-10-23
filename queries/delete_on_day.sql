@@ -1,0 +1,2 @@
+DELETE FROM AUTOS 
+where scan_date = x1657317600
