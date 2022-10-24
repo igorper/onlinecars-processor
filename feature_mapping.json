@@ -152,6 +152,7 @@
     {
       "FIELD": "parking_assistant",
       "LOOKUP": [
+        "einparkhilfe voren & hinten", 
         "aussparkassistent",
         "einparkhilfe vorne vorne & hinten",
         "parklenkassistent und einparkhilfe",
