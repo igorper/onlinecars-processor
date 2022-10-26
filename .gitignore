@@ -1,3 +1,4 @@
 data/
 input/
 .DS_Store
+__pycache__
