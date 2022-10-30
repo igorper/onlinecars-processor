@@ -124,6 +124,7 @@
     {
       "FIELD": "side_mirror_electric",
       "LOOKUP": [
+        "außenspiegel elektr. einstell- anklapp- und beheizbar", 
         "au\u00dfenspiegel beheizbar",
         "au\u00dfenspiegel elektr. anklappbar",
         "au\u00dfenspiegel elektr. einstell- anklapp- beheizbar",
@@ -152,6 +153,7 @@
     {
       "FIELD": "parking_assistant",
       "LOOKUP": [
+        "einparkhilfe voren & hinten", 
         "aussparkassistent",
         "einparkhilfe vorne vorne & hinten",
         "parklenkassistent und einparkhilfe",
