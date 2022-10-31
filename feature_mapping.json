@@ -2,6 +2,7 @@
     {
       "FIELD": "usb_aux",
       "LOOKUP": [
+        "2 usb & aux-in", 
         "usb und aux anschluss",
         "usb-schnittstelle & aux-ix",
         "2 usb schnittstellen & aux in",
@@ -124,6 +125,8 @@
     {
       "FIELD": "side_mirror_electric",
       "LOOKUP": [
+        "außenspiegel elektrisch einstell- beheizbar", 
+        "außenspiegel elektr. einstell- anklapp- und beheizbar", 
         "au\u00dfenspiegel beheizbar",
         "au\u00dfenspiegel elektr. anklappbar",
         "au\u00dfenspiegel elektr. einstell- anklapp- beheizbar",
@@ -152,6 +155,7 @@
     {
       "FIELD": "parking_assistant",
       "LOOKUP": [
+        "einparkhilfe voren & hinten", 
         "aussparkassistent",
         "einparkhilfe vorne vorne & hinten",
         "parklenkassistent und einparkhilfe",
@@ -179,6 +183,7 @@
     {
       "FIELD": "other",
       "LOOKUP": [
+        "erstbesitz", 
         "r-line",
         "federung hinten mit vollautomatischem niveauregulierungssystem",
         "real time traffic information",
@@ -311,6 +316,10 @@
     {
       "FIELD": "fancy_driver_seat",
       "LOOKUP": [
+        "elektr. sitzverstellung", 
+        "fahrersitz mit memoryfunktion", 
+        "elec. fahrersitz mit memory funktion", 
+        "sitzverstellung vorne elektr.", 
         "fahrerlehne elektr. mit massagefunktion",
         "lehneneinstellung elektrisch fahrersitz",
         "fahrerlehne mit massagefunktion",
@@ -425,6 +434,8 @@
     {
       "FIELD": "leather_seats",
       "LOOKUP": [
+        "leder-alcantaraausstattung", 
+        "leder-alcantara sportsitze", 
         "teilleder sporsitze beheizbar",
         "leder-/alcantara sportsitze beheizbar",
         "leder/alcantara",
@@ -452,6 +463,7 @@
     {
       "FIELD": "fancy_steering_wheel",
       "LOOKUP": [
+        "m-sportlenkrad", 
         "r-line multifunktions-sportlederlenkrad mit schaltwippen",
         "multifunktions-sportlederlenkrad",
         "multifunktions-lederlenkrad beheizbar",
@@ -620,6 +632,7 @@
     {
       "FIELD": "traffic_line_assist",
       "LOOKUP": [
+        "spurhalte- stau- auspark- assistent", 
         "spurhalte- stau- ausparkassistent",
         "spurhalte-assistent",
         "spurhaltewarnung",
@@ -711,6 +724,7 @@
     {
       "FIELD": "active_info_display",
       "LOOKUP": [
+        "multifunktionales instrumentaldisplay", 
         "digital cockpit pro",
         "digital-cockpit pro",
         "multifunktionales instrumentendisplay",
@@ -772,6 +786,7 @@
     {
       "FIELD": "fancy_sound",
       "LOOKUP": [
+        "harman kardon surround soundsystem", 
         "dynaudio soundsystem",
         "harman/kardon",
         "soundsystem harman/kardon",
