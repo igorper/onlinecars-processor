@@ -138,4 +138,5 @@ if __name__ == "__main__":
 
     # Nice to have TODOS
     # - we could map FeatureNormalizers with table creation, since they use the same field names, we would just need to add type info to FNs and maybe name the class better
+    # - a script that would fill-in feature mapping based on some distance -> e.g levenstein
     pass

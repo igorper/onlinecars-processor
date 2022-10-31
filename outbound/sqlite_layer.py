@@ -62,7 +62,7 @@ class SqlLiteBackend(DataRepository):
 
     def open_db_conn(self):
         try:
-            self.conn = sqlite3.connect("data/all_database_new1.db")
+            self.conn = sqlite3.connect("data/all_database.db")
         except Error as e:
             print(e)
 
