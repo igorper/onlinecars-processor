@@ -1,13 +1,22 @@
 import json
 from datetime import datetime
 from unittest.result import failfast
+import os
+import sys
+import logging
 
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
-def crawl_and_extract_filter_json(logs):
+# TODO: toggle to write to a log file, have to separate log files, INFO and DEBUG
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+log = logging.getLogger("save_current_day_json")
+
+
+def crawl_and_extract_filter_json(logs, out_file):
     lookup = {}
     for entry in logs:
         log = json.loads(entry["message"])["message"]
@@ -32,36 +41,61 @@ def crawl_and_extract_filter_json(logs):
     final_object = {}
     final_object['data'] = {}
     final_object['data']['cars'] = list(items.values())
+
+    print("Number of items extracted: " + str(len(final_object['data']['cars'])))
     
     json_object = json.dumps(final_object)
 
-    today = datetime.today().strftime('%d-%m-%Y') 
     # Writing to sample.json
-    with open("input/" + today + ".json", "w") as outfile:
+    with open(out_file, "w") as outfile:
         outfile.write(json_object)
 
-# parametrize url and output folder
-# create cron task that runs every hour (e.g. between 8 and 20)
-# should be idempotent to only create a file if it was not yet created on this day
+
+# use chrome performance logs to capture xhr requests
+def set_capabilities_to_capture_xhr():
+    capabilities = DesiredCapabilities.CHROME
+    capabilities["goog:loggingPrefs"] = {"performance": "ALL"}
+    return capabilities
+
+
 if __name__ == "__main__":
 
-    today = datetime.today().strftime('%d-%m-%Y') 
+    url = "https://www.onlinecars.at/search?manufacturers=VW,Mercedes,BMW&models=Golf,Passat&constructions=Kombi&price=3000,23000&year=2017,2022&mileage=0,150000&"
+    output_folder = "test/"
+    sleep_time = 5
 
+    if len(sys.argv) > 1:
+        print("Running for all cars")
+        # url = "https://www.onlinecars.at/search"
+        url = "https://www.onlinecars.at/search?manufacturers=VW,Mercedes,BMW&models=Golf,Passat&constructions=Kombi&price=3000,23000&year=2017,2022&mileage=0,150000&"
+        output_folder = "all_cars_input/"
+        sleep_time = 60
+    else:
+        print("Running for prefiltered cars")
 
+    today = datetime.today().strftime('%d-%m-%Y')
+    out_file = output_folder + today +  ".json"
+
+    if os.path.exists(out_file):
+        print("Already done for today")
+        exit(0)
+
+    driver = None
     try:
-        chrome_options = Options()
-        #chrome_options.add_argument("--headless")
-        #chrome_options.add_argument("--window-size=1920x1080")
+        capabilities = set_capabilities_to_capture_xhr() 
 
-        capabilities = DesiredCapabilities.CHROME
-        capabilities["goog:loggingPrefs"] = {"performance": "ALL"} 
-        driver = webdriver. Chrome(chrome_options=chrome_options, executable_path="/opt/homebrew/Caskroom/chromedriver/107.0.5304.62/chromedriver", desired_capabilities=capabilities)
-        driver.get("https://www.onlinecars.at/search?manufacturers=VW,Mercedes,BMW&models=Golf,Passat&constructions=Kombi&price=3000,23000&year=2017,2022&mileage=0,150000&")
-        sleep(2)
+        driver = webdriver. Chrome(service=Service(ChromeDriverManager().install()), desired_capabilities=capabilities)
+        driver.minimize_window()
+        # TODO: we could save a screenshot every day to make sure we are collecting correct data
+        #driver.save_screenshot('path')
+        driver.get(url)
+        log.info("Sleeping for %d seconds", sleep_time)
+        sleep(sleep_time)
 
         logs = driver.get_log("performance")
 
-        crawl_and_extract_filter_json(logs)
-    finally:    
-        driver.close()
-        driver.quit()
+        crawl_and_extract_filter_json(logs, out_file)
+    finally:
+        if driver is not None:
+            driver.close()
+            driver.quit()

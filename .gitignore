@@ -1,4 +1,6 @@
 data/
 input/
+all_cars_input/
+.idea/
 .DS_Store
 __pycache__
