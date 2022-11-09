@@ -72,6 +72,9 @@ class CarMapper:
             processed_cars.append(processed_car)
 
         if len(all_ignored) > 0:
+            # TODO: use lev distance to map unrecognized features with closest matches (if the difference is less than 20 %), modify feature json and close
+            # First step, just rerun, in later versions we can reload the features map and retry
+
             print("Aborting inserting for file, since there are some unmapped features. Make sure to map them and extend DB schema.")
             # use set() to deduplicate
             print()

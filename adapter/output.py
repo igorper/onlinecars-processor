@@ -3,7 +3,7 @@ from sqlite3 import Error
 from datetime import datetime
 import json
 
-class DataRepository:
+class OutputRepository:
     conn = None
 
     def __init__(self) -> None:
@@ -53,16 +53,16 @@ class LoggingRepository:
     def createSchema(self, FEATURE_NORMALIZERS):
         pass
 
-# TODO: rename to SqLiteRepository
-class SqlLiteBackend(DataRepository):
+class SqlLiteRepository(OutputRepository):
     conn = None
+    db_path = None
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, db_path) -> None:
+        self.db_path = db_path
 
     def open_db_conn(self):
         try:
-            self.conn = sqlite3.connect("data/all_database.db")
+            self.conn = sqlite3.connect(self.db_path)
         except Error as e:
             print(e)
 

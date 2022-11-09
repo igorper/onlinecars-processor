@@ -22,17 +22,24 @@
         "usb-schnittstelle inkl. aux-in",
         "usb-schnittstellen aux-in",
         "usb-schnittstelle aux-in",
-        "usb-schnittstelle auch f\u00fcr ipod/iphone"
+        "usb-schnittstelle auch f\u00fcr ipod/iphone",
+        "dc-schnellladen"
       ]
     },
     {
-      "FIELD": "tires_fancy",
+      "FIELD": "fancy_wheels",
       "LOOKUP": [
         "amg-r\u00e4der 18 zoll 225 40 18",
         "17 zoll r\u00e4der 225 45 17",
         "18 zoll r\u00e4der 235 45 18",
         "18 zoll amg r\u00e4der",
-        "19 zoll r\u00e4der 235 40 19"
+        "19 zoll r\u00e4der 235 40 19",
+        "amg-leichtmetallr\u00e4der",
+        "alur\u00e4der",
+        "leichtmetallfelgen",
+        "leichtmetallr\u00e4der",
+        "leichtmetallr\u00e4der",
+        "r-line alur\u00e4der"
       ]
     },
     {
@@ -56,7 +63,8 @@
     {
       "FIELD": "abs",
       "LOOKUP": [
-        "abs"
+        "abs",
+        "bremsassistent"
       ]
     },
     {
@@ -75,12 +83,7 @@
         "kopfairbagsystem f\u00fcr front- und fondpassagiere inkl. seitenairbags vorn",
         "kopfairbagsystem inkl. seitenairbags vorn",
         "airbag",
-        "beifahrer airbag"
-      ]
-    },
-    {
-      "FIELD": "airbag_deactivate_passenger",
-      "LOOKUP": [
+        "beifahrer airbag",
         "beifahrerairbag-deaktivierbar",
         "deaktivierungsschalter f\u00fcr beifahrerairbag",
         "airbag deaktivierung beifahrer",
@@ -108,14 +111,10 @@
         "anh\u00e4ngekupplung",
         "anh\u00e4ngerkupplung",
         "anh\u00e4ngevorrichtung anklappbar",
-        "anhaengerkupplung"
-      ]
-    },
-    {
-      "FIELD": "trailer_hitch_preparation",
-      "LOOKUP": [
+        "anhaengerkupplung",
         "anhaengevorrichtung",
-        "anh\u00e4ngevorrichtung"
+        "anh\u00e4ngevorrichtung",
+        "anh\u00e4ngerrangierassistent"
       ]
     },
     {
@@ -186,60 +185,77 @@
       ]
     },
     {
+      "FIELD": "ignore",
+      "LOOKUP": [
+        "===",
+        ""
+      ]
+    },
+    {
+      "FIELD": "special_notes",
+      "LOOKUP": [
+        "erstbesitz",
+        "aus damenhand",
+        "unfall fahrzeug",
+        "verkauf nur an gewerbe",
+        "eu spezifische zusatzumfaenge",
+        "hagelschaden"
+      ]
+    },
+    {
+      "FIELD": "sport",
+      "LOOKUP": [
+        "m-sportfahrwerk",
+        "r-line",
+        "variable sportlenkung",
+        "r-line interieur",
+        "sportfahwerk",
+        "r-line exterieur",
+        "amg sportpaket",
+        "m spotpaket",
+        "m sportpaket",
+        "luxury-line",
+        "sportpaket amg",
+        "luxury line",
+        "m-sportpaket",
+        "m \u00e4rodynamikpaket",
+        "m sportfahrwerk",
+        "sportpaket",
+        "avantgarde-paket exterieur",
+        "amg-sportpaket",
+        "luxury-paket interieur",
+        "sportfahrwerk",
+        "sport line",
+        "sportline"
+      ]
+    },
+    {
       "FIELD": "other",
       "LOOKUP": [
         "active protection",
-        "m-sportfahrwerk",
-        "erstbesitz",
-        "r-line",
         "federung hinten mit vollautomatischem niveauregulierungssystem",
         "real time traffic information",
         "reifenreparatur-set",
         "fahrerlebnisschalter inkl. eco pro",
         "standheizung",
-        "unfall fahrzeug",
         "standheizung/-l\u00fcftung",
         "verkauf nur an gewerbe",
-        "===",
-        "variable sportlenkung",
-        "r-line interieur",
-        "sportfahwerk",
-        "r-line exterieur",
         "schiebet\u00fcr links & rechts",
         "schiebet\u00fcr links",
-        "amg sportpaket",
         "dc-schnellladen",
         "waermepumpe",
         "ac-laden professional",
         "schiebet\u00fcr rechts",
         "w\u00e4rmepumpe",
-        "m spotpaket",
-        "aus damenhand",
-        "m sportpaket",
-        "luxury-line",
-        "sportpaket amg",
         "7-sitzer",
-        "luxury line",
-        "m-sportpaket",
-        "m \u00e4rodynamikpaket",
-        "m sportfahrwerk",
         "durchladesystem",
         "klapptische an den r\u00fcckseiten der vordersitze",
         "nightpaket",
-        "sportpaket",
-        "avantgarde-paket exterieur",
-        "eu spezifische zusatzumfaenge",
         "nigthpaket",
-        "amg-sportpaket",
-        "luxury-paket interieur",
-        "anh\u00e4ngerrangierassistent",
         "schlechtwegefahrwerk",
         "durchlademoeglichkeit",
-        "sportfahrwerk",
         "basis",
-        "crimson red metallic",
-        "sport line",
-        "sportline"
+        "regionscode"
       ]
     },
     {
@@ -262,12 +278,6 @@
       ]
     },
     {
-      "FIELD": "break_assistant",
-      "LOOKUP": [
-        "bremsassistent"
-      ]
-    },
-    {
       "FIELD": "roof_rails",
       "LOOKUP": [
         "dachreling",
@@ -285,15 +295,6 @@
       "FIELD": "digital_radio",
       "LOOKUP": [
         "digitaler radioempfang"
-      ]
-    },
-    {
-      "FIELD": "drive_assistant",
-      "LOOKUP": [
-        "active guard",
-        "kollisionswarner m. aktivem bremseingriff",
-        "anfahrhilfe-/ abfahrhilfe",
-        "driving assistant"
       ]
     },
     {
@@ -352,7 +353,6 @@
         "sitzeinstellung elektr. mit memory",
         "massagefunktion auf fahrerseite",
         "fahrersitzlehen elektr. einstellbar",
-        "fahrprogrammwahlschalter",
         "fahrersitzlehne elektr. einstellbar mit massage",
         "fahrersitz elektr. mit memoryfunktion",
         "fahrersitz mit massage und memory",
@@ -374,13 +374,29 @@
         "sitzverstellung elektr.mit memory",
         "lordosenst\u00fctze",
         "lordosenst\u00fctze fahrer/beifahrer",
-        "lordosenstuetzen vorne"
+        "lordosenstuetzen vorne",
+        "fahrerlehne elektrisch einstellbar",
+        "fahrerlehne elektr. einstellbar",
+        "mittelarmlehne vorn e",
+        "mittelarmlehne vorne & hinten",
+        "mittelarmlehne vorn",
+        "mittelarmlehne vorne",
+        "armauflage vorne verschiebbar",
+        "beifahrersitzlehne komplett umklappbar",
+        "mittelarmlhene vorn",
+        "vordersitze beheizbar",
+        "sporsitze beheizbar",
+        "sitzheizung vorne & hinten",
+        "sitzheizung",
+        "sitzheizunug",
+        "sportsitze beheizbar"
       ]
     },
     {
       "FIELD": "driver_profile_assistant",
       "LOOKUP": [
-        "fahrprofilauswahl"
+        "fahrprofilauswahl",
+        "fahrprogrammwahlschalter"
       ]
     },
     {
@@ -392,14 +408,6 @@
         "dynamische fernlichtregulierung",
         "fernlichtassistent",
         "innenspiegel automatisch abblendend"
-      ]
-    },
-    {
-      "FIELD": "front_collision_warn",
-      "LOOKUP": [
-        "kollisionswarner mit aktivem bremseingriff",
-        "frontkollisionswarner",
-        "kollisionswarner"
       ]
     },
     {
@@ -464,6 +472,11 @@
         "lederausstattung",
         "lederaustattung",
         "leder/-alcantara",
+        "leder/-alcantara sportsitze beheizbar",
+        "leder-sportsitze beheizbar",
+        "teilleder-sportsitze beheizbar",
+        "leder sportsitze beheizbar",
+        "leder-\\/alcantara sportsitze beheizbar",
         "leder/-alcantara sportsitze beheizbar"
       ]
     },
@@ -498,36 +511,11 @@
       ]
     },
     {
-      "FIELD": "alloy_wheels",
-      "LOOKUP": [
-        "amg-leichtmetallr\u00e4der",
-        "alur\u00e4der",
-        "leichtmetallfelgen",
-        "leichtmetallr\u00e4der",
-        "leichtmetallr\u00e4der",
-        "r-line alur\u00e4der"
-      ]
-    },
-    {
       "FIELD": "sleepiness_sensor",
       "LOOKUP": [
         "m\u00fcdigkeisterkennung",
         "attention assist",
         "m\u00fcdigkeitserkennung"
-      ]
-    },
-    {
-      "FIELD": "hand_support_midle",
-      "LOOKUP": [
-        "fahrerlehne elektrisch einstellbar",
-        "fahrerlehne elektr. einstellbar",
-        "mittelarmlehne vorn e",
-        "mittelarmlehne vorne & hinten",
-        "mittelarmlehne vorn",
-        "mittelarmlehne vorne",
-        "armauflage vorne verschiebbar",
-        "beifahrersitzlehne komplett umklappbar",
-        "mittelarmlhene vorn"
       ]
     },
     {
@@ -579,12 +567,6 @@
       ]
     },
     {
-      "FIELD": "region_code",
-      "LOOKUP": [
-        "regionscode"
-      ]
-    },
-    {
       "FIELD": "windows_dimmed",
       "LOOKUP": [
         "individual sonnenschutzverglasung",
@@ -611,17 +593,7 @@
     {
       "FIELD": "seat_heating",
       "LOOKUP": [
-        "vordersitze beheizbar",
-        "sporsitze beheizbar",
-        "leder-sportsitze beheizbar",
-        "teilleder-sportsitze beheizbar",
-        "sitzheizung vorne & hinten",
-        "sitzheizung",
-        "sitzheizunug",
-        "leder sportsitze beheizbar",
-        "leder-\\/alcantara sportsitze beheizbar",
-        "sportsitze beheizbar",
-        "leder/-alcantara sportsitze beheizbar"
+
       ]
     },
     {
@@ -641,7 +613,7 @@
       ]
     },
     {
-      "FIELD": "traffic_line_assist",
+      "FIELD": "driving_assistant",
       "LOOKUP": [
         "spurhalte- stau- auspark- assistent", 
         "spurhalte- stau- ausparkassistent",
@@ -655,7 +627,15 @@
         "spurverlassenswarner",
         "spurwechselassistent",
         "spurwechselwarner",
-        "spurwechselwarnung"
+        "spurwechselwarnung",
+        "active guard",
+        "kollisionswarner m. aktivem bremseingriff",
+        "anfahrhilfe-/ abfahrhilfe",
+        "driving assistant",
+        "kollisionswarner mit aktivem bremseingriff",
+        "frontkollisionswarner",
+        "kollisionswarner",
+        "speed limit info"
       ]
     },
     {
@@ -756,6 +736,7 @@
     {
       "FIELD": "fancy_color",
       "LOOKUP": [
+        "crimson red metallic",
         "pyrit silber metallic",
         "mangangrau metallic",
         "indiumgrau metallic",
@@ -781,12 +762,6 @@
         "tornadorot",
         "reflexsilber metallic",
         "mineralgrau metallic"
-      ]
-    },
-    {
-      "FIELD": "hagel_damage",
-      "LOOKUP": [
-        "hagelschaden"
       ]
     },
     {
@@ -853,12 +828,6 @@
         "360 grad kamera",
         "surround view",
         "360-grad kamera"
-      ]
-    },
-    {
-      "FIELD": "speed_limit_info",
-      "LOOKUP": [
-        "speed limit info"
       ]
     }
   ]
