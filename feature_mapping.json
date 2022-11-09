@@ -38,6 +38,8 @@
     {
       "FIELD": "klima",
       "LOOKUP": [
+        "klimakomfort-frontscheibe",
+        "klimautomatik",
         "3 zonen-klimaautomatik",
         "climatronic",
         "3-zonen klimaautomtik",
@@ -60,6 +62,7 @@
     {
       "FIELD": "active_tempomat",
       "LOOKUP": [
+        "adaptive fahrwerksregelung",
         "autoamtische-distanzregelung",
         "abstandsradar",
         "automatische distanzregelung"
@@ -155,6 +158,8 @@
     {
       "FIELD": "parking_assistant",
       "LOOKUP": [
+        "einparkhilfe vore & hinten",
+        "einparkhilfe vorne & vorne",
         "einparkhilfe voren & hinten", 
         "aussparkassistent",
         "einparkhilfe vorne vorne & hinten",
@@ -183,7 +188,9 @@
     {
       "FIELD": "other",
       "LOOKUP": [
-        "erstbesitz", 
+        "active protection",
+        "m-sportfahrwerk",
+        "erstbesitz",
         "r-line",
         "federung hinten mit vollautomatischem niveauregulierungssystem",
         "real time traffic information",
@@ -298,6 +305,7 @@
     {
       "FIELD": "electric_parking_brake",
       "LOOKUP": [
+        "auto-hold",
         "auto-hold-funktion",
         "parkbremse elektrisch inkl. auto-hold-funktion",
         "parkbremse elektr.",
@@ -316,6 +324,7 @@
     {
       "FIELD": "fancy_driver_seat",
       "LOOKUP": [
+        "fahrerlehne mit massagefuntkion",
         "elektr. sitzverstellung", 
         "fahrersitz mit memoryfunktion", 
         "elec. fahrersitz mit memory funktion", 
@@ -331,7 +340,6 @@
         "sitzeinstellung elektr.",
         "linke vordersitzlehne mit massagefunktion",
         "lordosenst\u00fctzen vorne",
-        "sportmultifunktions-lederlenkrad",
         "massagefunktion",
         "lordosenverstellung",
         "massage- und memory fahrerseite",
@@ -401,8 +409,7 @@
         "heckklappe elektrisch",
         "gep\u00e4ckraumklappe elektrisch",
         "gep\u00e4ckraumklappe elektr.",
-        "gep\u00e4cksraumklappe elektr.",
-        ""
+        "gep\u00e4cksraumklappe elektr."
       ]
     },
     {
@@ -463,6 +470,8 @@
     {
       "FIELD": "fancy_steering_wheel",
       "LOOKUP": [
+        "multifunktions-lederlenkra",
+        "sportmultifunktions-lederlenkrad","multifunktionslenkrad-lederlenkrad mit schaltwippen",
         "m-sportlenkrad", 
         "r-line multifunktions-sportlederlenkrad mit schaltwippen",
         "multifunktions-sportlederlenkrad",
@@ -578,6 +587,7 @@
     {
       "FIELD": "windows_dimmed",
       "LOOKUP": [
+        "individual sonnenschutzverglasung",
         "sonnenschutzverglasung",
         "scheiben abgedunkelt"
       ]
@@ -617,6 +627,7 @@
     {
       "FIELD": "sun_rollo",
       "LOOKUP": [
+        "sonnenschutzrollo hinten",
         "sonnenschutzrollo an den t\u00fcrscheiben hinten",
         "sonnenschutzrollo"
       ]
@@ -650,6 +661,7 @@
     {
       "FIELD": "start_stop",
       "LOOKUP": [
+        "auto start stop funktion",
         "start/stop system",
         "eco start-stop funktion",
         "start-\\/stopp-technologie",
@@ -744,6 +756,7 @@
     {
       "FIELD": "fancy_color",
       "LOOKUP": [
+        "pyrit silber metallic",
         "mangangrau metallic",
         "indiumgrau metallic",
         "atlantic blue metallic",
