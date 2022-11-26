@@ -389,7 +389,8 @@
         "sitzheizung vorne & hinten",
         "sitzheizung",
         "sitzheizunug",
-        "sportsitze beheizbar"
+        "sportsitze beheizbar",
+        "sporstitze beheizbar"
       ]
     },
     {
@@ -546,6 +547,7 @@
     {
       "FIELD": "split_rear_bank",
       "LOOKUP": [
+        "2 kindersitze in die rücksitzbank integriert",
         "r\u00fccksitzbank asymmetrisch umklappbar",
         "r\u00fccksitzbank asymmetrisch teilbar l\u00e4ngs verschieb- und klappbar",
         "r\u00fccksitzbank geteilt umklappbar",
@@ -736,6 +738,7 @@
     {
       "FIELD": "fancy_color",
       "LOOKUP": [
+        "orysweiß perlmutteffekt",
         "crimson red metallic",
         "pyrit silber metallic",
         "mangangrau metallic",
@@ -774,6 +777,7 @@
     {
       "FIELD": "fancy_sound",
       "LOOKUP": [
+        "soundsystem dynaudio",
         "harman kardon surround soundsystem", 
         "dynaudio soundsystem",
         "harman/kardon",
