@@ -3,7 +3,8 @@ from datetime import datetime
 import json
 from collections import defaultdict
 import re
-
+from Levenshtein import distance as levenshtein_distance
+from logic.feature_normalizer import FeatureNormalizer
 
 class CarMapper:
     PASS_THROUGH_FIELDS = ['manufacturer', 'modelgroup', 'model', 'cashprice_raw', 'thumbnail',  'vin', 'parking_place', 'location', 'tag', 'id']
@@ -75,15 +76,40 @@ class CarMapper:
             # TODO: use lev distance to map unrecognized features with closest matches (if the difference is less than 20 %), modify feature json and close
             # First step, just rerun, in later versions we can reload the features map and retry
 
-            print("Aborting inserting for file, since there are some unmapped features. Make sure to map them and extend DB schema.")
-            # use set() to deduplicate
-            print()
-            for ignored_item in set(all_ignored):
-                print("\"" + ignored_item + "\", ")
+            missed_features_found = []
+            for string_to_match in all_ignored:
+                for feature in FEATURE_NORMALIZERS:
+                    # print("Checking :" + feature.FIELD)
+                    l = feature.LOOKUP
+                    for i in range(0,len(l)):
+                        if len(l[i]) == 0:
+                            continue
 
-            print()
-            
-            return None
+                        relative_ldist = levenshtein_distance(string_to_match, l[i]) / len(l[i]) * 100
+                        if relative_ldist < 20:
+                            missed_features_found.append(string_to_match)
+                            feature.LOOKUP.append(string_to_match)
+                            print("Similarity between '%s' and '%s': %d" % (string_to_match, l[i], relative_ldist))
+                            print("Adding '%s' to category '%s" %(string_to_match, feature.FIELD))
+                            break
+
+            # save here the
+            FeatureNormalizer.to_json(FEATURE_NORMALIZERS)
+
+            not_found_features = list(set(all_ignored).symmetric_difference(set(missed_features_found)))
+
+            if len(not_found_features) == 0:
+                print("Mapped all missing features, trying again.")
+                return self.process_date_file(FEATURE_NORMALIZERS, scan_date)
+            else:
+                print("Aborting inserting for file, since there are some unmapped features. Make sure to map them and extend DB schema.")
+                # use set() to deduplicate
+                print()
+                for ignored_item in set(not_found_features):
+                    print("\"" + ignored_item + "\", ")
+
+                print()
+                return None
         
         flat = self.__flatten_values_array_to_string(processed_cars)
         return flat

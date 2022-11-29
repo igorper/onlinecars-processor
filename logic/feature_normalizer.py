@@ -16,3 +16,13 @@ class FeatureNormalizer:
             output.append(FeatureNormalizer(row['FIELD'], row['LOOKUP']))
 
         return output
+
+    @staticmethod
+    def to_json(feature_normalizer):
+        # TODO: make feature_normalizer class field
+        out = []
+        for i in feature_normalizer:
+            out.append( {"FIELD": i.FIELD, "LOOKUP": i.LOOKUP})
+        out_str = json.dumps(out, indent=4)
+        with open('feature_mapping.json', encoding="utf8", mode="w") as f:
+            f.write(out_str)
